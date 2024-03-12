@@ -1,206 +1,224 @@
-alert("Bienvenido/a al primer paso para comer un menú balanceado y saludable 😋.");
+/* Constantes */
+const contenedorB = document.querySelector("#contenedorB");
+const contenedorC = document.querySelector("#contenedorC");
+const ingresoBusqueda = document.querySelectorAll("input");
+const btnBuscar = document.querySelector("#btnBuscar");
+const lunesBox = document.querySelector("#lunes-box");
+const martesBox = document.querySelector("#martes-box");
+const miercolesBox = document.querySelector("#miercoles-box");
+const juevesBox = document.querySelector("#jueves-box");
+const viernesBox = document.querySelector("#viernes-box");
+const sabadoBox = document.querySelector("#sabado-box");
+const domingoBox = document.querySelector("#domingo-box");
+const inputBuscar = ingresoBusqueda[0];
+let cantidadDias = 0;
 
-/* Array para Opciones de Categoría */
-const categorias = ["Pescado o marisco 🐟", "Carne de res o cerdo 🥩", "Aves 🍗", "Pasta 🍝", "Menestras 🫘", "Platos especiales 🍲", "Restaurante o delivery 👩🏻‍🍳"];
+/* Arrays */
+const semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
+const categorias = ["", "Pescado o marisco 🐟", "Carne de res o cerdo 🥩", "Aves 🍗", "Pasta 🍝", "Menestras o cereales 🫘", "Platos especiales 🍲", "Restaurante o delivery 👩🏻‍🍳", "***  Buscar por plato 🔎  ***"];
+const PlatosDeFondo = [
+    { id: 1, nombre: "ceviche de pescado", categoria: categorias[1], preparacion: "sí", acompaniamiento: "camote", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p01CevicheDePescado.jpg" },
+    { id: 2, nombre: "arrimado de atún", categoria: categorias[1], preparacion: "no", acompaniamiento: "arroz", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p02ArrimadoDeAtun.jpg" },
+    { id: 3, nombre: "chupe de pescado", categoria: categorias[1], preparacion: "no", acompaniamiento: 'choclo', inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p03ChupeDePescado.jpg" },
+    { id: 4, nombre: "coctel de langostinos", categoria: categorias[1], preparacion: "sí", acompaniamiento: "no", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p04CoctelDeLangostinos.jpg" },
+    { id: 5, nombre: "escabeche", categoria: categorias[1], preparacion: "sí", acompaniamiento: "no", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p05Escabeche.jpg" },
+    { id: 6, nombre: "arroz con langostinos", categoria: categorias[1], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p06ArrozConLangostinos.jpg" },
+    { id: 7, nombre: "pejerreyes fritos", categoria: categorias[1], preparacion: "sí", acompaniamiento: "puré de papa", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p07PejerreyesFritos.jpg" },
+    { id: 8, nombre: "albóndigas", categoria: categorias[2], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p08Albondigas.jpg" },
+    { id: 9, nombre: "arroz tapado", categoria: categorias[2], preparacion: "no", acompaniamiento: "platano frito", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p09ArrozTapado.jpg" },
+    { id: 10, nombre: "asado", categoria: categorias[2], preparacion: "no", acompaniamiento: "puré de papa", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p10Asado.jpg" },
+    { id: 11, nombre: "bistec", categoria: categorias[2], preparacion: "sí", acompaniamiento: "papa dorada", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p11Bistec.jpg" },
+    { id: 12, nombre: "chuleta", categoria: categorias[2], preparacion: "sí", acompaniamiento: "camote", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p12Chuleta.jpg" },
+    { id: 13, nombre: "apanado", categoria: categorias[2], preparacion: "sí", acompaniamiento: "arroz", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p13Apanado.jpg" },
+    { id: 14, nombre: "enrollado de carne", categoria: categorias[2], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p14EnrolladoDeCarne.jpg" },
+    { id: 15, nombre: "ají de gallina", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "elaborado", alergia: "sí", img: "p15AjiDeGallina.jpg" },
+    { id: 16, nombre: "alitas fritas", categoria: categorias[3], preparacion: "sí", acompaniamiento: "puré de papa", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p16AlitasFritas.jpg" },
+    { id: 17, nombre: "arroz con pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p17ArrozConPollo.jpg" },
+    { id: 18, nombre: "cordon bleu", categoria: categorias[3], preparacion: "sí", acompaniamiento: "puré de yuca", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p18CordonBleu.jpg" },
+    { id: 19, nombre: "estofado de pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p19EstofadoDePollo.jpg" },
+    { id: 20, nombre: "guiso de pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p20GuisoDePollo.jpg" },
+    { id: 21, nombre: "pavo con puré", categoria: categorias[3], preparacion: "no", acompaniamiento: "puré de papa", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p21PavoConPure.jpg" },
+    { id: 22, nombre: "capeletti", categoria: categorias[4], preparacion: "no", acompaniamiento: "salsa a la crema", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p22Capeletti.jpg" },
+    { id: 23, nombre: "ensalada de fideos", categoria: categorias[4], preparacion: "no", acompaniamiento: "no", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p23EnsaladaDeFideos.jpg" },
+    { id: 24, nombre: "fideos con salsa a lo Alfredo", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p24FideosConSalsaALoAlfredo.jpg" },
+    { id: 25, nombre: "fideos con sala de nuez", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p25FideosConSalsaDeNuez.jpg" },
+    { id: 26, nombre: "fideos con salsa verde", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p26FideosConSalsaVerde.jpg" },
+    { id: 27, nombre: "lasagna de carne", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p27LasagnaDeCarne.jpg" },
+    { id: 28, nombre: "ravioles", categoria: categorias[4], preparacion: "no", acompaniamiento: "salsa de tuco", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p28Ravioles.jpg" },
+    { id: 29, nombre: "trigo con carne", categoria: categorias[5], preparacion: "no", acompaniamiento: "queso fresco", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p29TrigoConCarne.jpg" },
+    { id: 30, nombre: "frejol canario", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p30FrejolCanario.jpg" },
+    { id: 31, nombre: "frejol rojo", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p31FrejolRojo.jpg" },
+    { id: 32, nombre: "garbanzos a la vizcaina", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p32GarbanzosALaVizcaina.jpg" },
+    { id: 33, nombre: "lentejas", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p33Lentejas.jpg" },
+    { id: 34, nombre: "olluco", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p34Olluco.jpg" },
+    { id: 35, nombre: "garbanzos", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p35Garbanzos.jpg" },
+    { id: 36, nombre: "arroz a la cubana", categoria: categorias[6], preparacion: "sí", acompaniamiento: "platano frito", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p36ArrozALaCubana.jpg" },
+    { id: 37, nombre: "arroz chaufa", categoria: categorias[6], preparacion: "sí", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p37ArrozChaufa.jpg" },
+    { id: 38, nombre: "locro de zapallo", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p38LocroDeZapallo.jpg" },
+    { id: 39, nombre: "pastel de choclo con carne", categoria: categorias[6], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "elaborado", alergia: "no", img: "p39PastelDeChocloConCarne.jpg" },
+    { id: 40, nombre: "pepián de choclo", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p40PepianDeChoclo.jpg" },
+    { id: 41, nombre: "saltado de vainitas", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p41SaltadoDeVainitas.jpg" },
+    { id: 42, nombre: "carapulcra", categoria: categorias[6], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "elaborado", alergia: "sí", img: "p42Carapulcra.jpg" },
+    { id: 43, nombre: "Lo que se me antoje", categoria: categorias[7], preparacion: "N / A", acompaniamiento: "N / A", inmediatez: "N / A", elaboracion: "N / A", alergia: "N / A", img: "p43LoQueSeMeAntoje.jpg" },
+]
 
-/* Variables Globales - Cantidad de Días por Categoría */
-let cantidadDias = [0, 0, 0, 0, 0, 0, 0];
-let cantidadTotalDias = 0;
-const diasDeLaSemana = 7;
-
-/* Objeto constructor para Platos de Fondo */
-function PlatoDeFondo(id, nombre, categoria, preparacion, acompaniamiento, inmediatez, elaboracion, alergia) {
-    this.id = id
-    this.nombre = nombre;
-    this.categoria = categoria;
-    this.preparacion = preparacion;
-    this.acompaniamiento = acompaniamiento;
-    this.inmediatez = inmediatez;
-    this.elaboracion = elaboracion
-    this.alergia = alergia;
-}
-
-/* Lista de Platos de Fondo*/
-const platoDeFondo1 = new PlatoDeFondo("1", "ceviche de pescado", categorias[0], "no", "camote", "si", "básica", "no");
-const platoDeFondo2 = new PlatoDeFondo("2", "arrimado de atún", categorias[0], "no", "camote", "si", "básica", "no");
-const platoDeFondo3 = new PlatoDeFondo("3", "chupe de pescado", categorias[0], "no", "camote", "si", "básica", "no");
-const platoDeFondo4 = new PlatoDeFondo("4", "coctel de langostinos", categorias[0], "no", "camote", "si", "básica", "no");
-const platoDeFondo5 = new PlatoDeFondo("5", "escabeche", categorias[0], "no", "camote", "si", "básica", "no");
-const platoDeFondo6 = new PlatoDeFondo("6", "langostinos con arroz", categorias[0], "no", "arroz", "si", "básica", "no");
-const platoDeFondo7 = new PlatoDeFondo("7", "pejerreyes fritos", categorias[0], "no", "camote", "si", "básica", "no");
-const platoDeFondo8 = new PlatoDeFondo("8", "albóndigas", categorias[1], "no", "camote", "si", "básica", "no");
-const platoDeFondo9 = new PlatoDeFondo("9", "arroz tapado", categorias[1], "no", "camote", "si", "básica", "no");
-const platoDeFondo10 = new PlatoDeFondo("10", "asado", categorias[1], "no", "camote", "si", "básica", "no");
-const platoDeFondo11 = new PlatoDeFondo("11", "bistec", categorias[1], "no", "camote", "si", "básica", "no");
-const platoDeFondo12 = new PlatoDeFondo("12", "chuleta", categorias[1], "no", "camote", "si", "básica", "no");
-const platoDeFondo13 = new PlatoDeFondo("13", "apanado", categorias[1], "no", "arroz", "si", "básica", "no");
-const platoDeFondo14 = new PlatoDeFondo("14", "enrollado de carne", categorias[1], "no", "camote", "si", "básica", "no");
-const platoDeFondo15 = new PlatoDeFondo("15", "ají de gallina", categorias[2], "no", "camote", "si", "básica", "no");
-const platoDeFondo16 = new PlatoDeFondo("16", "alitas fritas", categorias[2], "no", "camote", "si", "básica", "no");
-const platoDeFondo17 = new PlatoDeFondo("17", "arroz con pollo", categorias[2], "no", "camote", "si", "básica", "no");
-const platoDeFondo18 = new PlatoDeFondo("18", "cordon bleu", categorias[2], "no", "camote", "si", "básica", "no");
-const platoDeFondo19 = new PlatoDeFondo("19", "estofado de pollo", categorias[2], "no", "camote", "si", "básica", "no");
-const platoDeFondo20 = new PlatoDeFondo("20", "guiso de pollo", categorias[2], "no", "arroz", "si", "básica", "no");
-const platoDeFondo21 = new PlatoDeFondo("21", "pavo con puré", categorias[2], "no", "camote", "si", "básica", "no");
-const platoDeFondo22 = new PlatoDeFondo("22", "capeletti", categorias[3], "no", "camote", "si", "básica", "no");
-const platoDeFondo23 = new PlatoDeFondo("23", "ensalada de fideos", categorias[3], "no", "camote", "si", "básica", "no");
-const platoDeFondo24 = new PlatoDeFondo("24", "fideos con salsa a lo Alfredo", categorias[3], "no", "camote", "si", "básica", "no");
-const platoDeFondo25 = new PlatoDeFondo("25", "fideos con sala de nuez", categorias[3], "no", "camote", "si", "básica", "no");
-const platoDeFondo26 = new PlatoDeFondo("26", "fideos con salsa verde", categorias[3], "no", "camote", "si", "básica", "no");
-const platoDeFondo27 = new PlatoDeFondo("27", "lasagna de carne", categorias[3], "no", "arroz", "si", "básica", "no");
-const platoDeFondo28 = new PlatoDeFondo("28", "ravioles", categorias[3], "no", "camote", "si", "básica", "no");
-const platoDeFondo29 = new PlatoDeFondo("29", "trigo con carne", categorias[4], "no", "camote", "si", "básica", "no");
-const platoDeFondo30 = new PlatoDeFondo("30", "frejol canario", categorias[4], "no", "camote", "si", "básica", "no");
-const platoDeFondo31 = new PlatoDeFondo("31", "frejol rojo", categorias[4], "no", "camote", "si", "básica", "no");
-const platoDeFondo32 = new PlatoDeFondo("32", "garbanzos a la vizcaina", categorias[4], "no", "camote", "si", "básica", "no");
-const platoDeFondo33 = new PlatoDeFondo("33", "lentejas", categorias[4], "no", "camote", "si", "básica", "no");
-const platoDeFondo34 = new PlatoDeFondo("34", "olluco", categorias[4], "no", "arroz", "si", "básica", "no");
-const platoDeFondo35 = new PlatoDeFondo("35", "garbanzos", categorias[4], "no", "camote", "si", "básica", "no");
-const platoDeFondo36 = new PlatoDeFondo("36", "arroz a la cubana", categorias[5], "no", "camote", "si", "básica", "no");
-const platoDeFondo37 = new PlatoDeFondo("37", "arroz chaufa", categorias[5], "no", "camote", "si", "básica", "no");
-const platoDeFondo38 = new PlatoDeFondo("38", "locro de zapallo", categorias[5], "no", "camote", "si", "básica", "no");
-const platoDeFondo39 = new PlatoDeFondo("39", "pastel de choclo con carne", categorias[5], "no", "camote", "si", "básica", "no");
-const platoDeFondo40 = new PlatoDeFondo("40", "pepián de choclo", categorias[5], "no", "camote", "si", "básica", "no");
-const platoDeFondo41 = new PlatoDeFondo("41", "saltado de vainitas", categorias[5], "no", "arroz", "si", "básica", "no");
-const platoDeFondo42 = new PlatoDeFondo("42", "carapulcra", categorias[5], "no", "camote", "si", "básica", "no");
-
-/* Array para Platos de Fondo*/
-const PlatosDeFondo = [platoDeFondo1, platoDeFondo2, platoDeFondo3, platoDeFondo4, platoDeFondo5, platoDeFondo6, platoDeFondo7, platoDeFondo8, platoDeFondo9, platoDeFondo10, platoDeFondo11, platoDeFondo12, platoDeFondo13, platoDeFondo14, platoDeFondo15, platoDeFondo16, platoDeFondo17, platoDeFondo18, platoDeFondo19, platoDeFondo20, platoDeFondo21, platoDeFondo22, platoDeFondo23, platoDeFondo24, platoDeFondo25, platoDeFondo26, platoDeFondo27, platoDeFondo28, platoDeFondo29, platoDeFondo30, platoDeFondo31, platoDeFondo32, platoDeFondo33, platoDeFondo34, platoDeFondo35, platoDeFondo36, platoDeFondo37, platoDeFondo38, platoDeFondo39, platoDeFondo40, platoDeFondo41, platoDeFondo42];
-
-/* Función para ingresar Opciones de Categoría */
-function ingresaCategoria() {
-    let opcionesDisponibles = categorias
-        .map((categoria, i) => {
-            if (cantidadDias[i] === 0) {
-                return (i + 1) + ". " + categoria;
-            }
-            return null;
-        })
-        .filter(opcion => opcion !== null)
-        .join('\n');
-
-    let mensaje = "Aquí te mostramos las categorías de comidas entre las que podrás elegir para completar tus almuerzos de 01 semana 🍴 (coloca el número correspondiente a la opción escogida):\n" + opcionesDisponibles + "\n\nIngresa 0 para terminar la selección de las opciones de categorías.";
-
-    while (true) {
-        let ingresoCategorias = prompt(mensaje);
-
-        if (ingresoCategorias == 0) {
-            return 0;
-        }
-
-        let index = ingresoCategorias - 1;
-
-        if (index >= 0 && index < categorias.length && cantidadDias[index] > 0) {
-            alert("Opción: " + ingresoCategorias + ". " + categorias[index] + " ya fue utilizada 😓, por favor ingresa una categoría válida.");
-        } else if (index >= 0 && index < categorias.length) {
-            return ingresoCategorias;
-        } else {
-            alert("Opción: " + ingresoCategorias + " es inválida 😓, por favor vuelve a ingresar una categoría dentro de las opciones.");
-        }
-    }
-}
-
-/* Función para ingresar Cantidad de Días por Categoría */
-function ingresaCantidadDeDias(categoria, diasRestantes) {
-    while (true) {
-        let ingreso = parseInt(prompt("Ingresa la cantidad de días que deseas comer " + categoria + " durante la semana (Te quedan: 0" + diasRestantes + " días de 07)."));
-
-        if (diasRestantes >= ingreso) {
-            return ingreso;
-        } else {
-            alert("Error 😓 - Vuelve a ingresar una cantidad de días permitida.");
-        }
-    }
-}
-
-/* Ruta Principal para elegir Categorías y Días*/
-while (true) {
-    let ingresoCategoria = ingresaCategoria();
-
-    if (ingresoCategoria == 0) {
-        alert("🎉 ¡Felicitaciones completaste tu semana!");
-        break;
-    }
-
-    let index = ingresoCategoria - 1;
-    let categoriaElegida = categorias[index];
-    alert("Elegiste: " + categoriaElegida);
-
-    let diasRestantes = diasDeLaSemana - cantidadTotalDias;
-    let cantidadEscogida = ingresaCantidadDeDias(categoriaElegida, diasRestantes);
-
-    cantidadDias[index] += cantidadEscogida;
-    cantidadTotalDias += cantidadEscogida;
-
-    alert("Ya elegiste " + cantidadTotalDias + " días de la semana.");
-
-    if (cantidadTotalDias == 7) {
-        alert("🎉 ¡Felicitaciones completaste tu semana!");
-        break;
-    }
-}
-
-/* Resultado de la Ruta para elegir Categorías y Días*/
-let resultado = "Estos son las categorías de comidas que elegiste para esta semana:\n\n";
-
-for (let i = 0; i < categorias.length; i++) {
-    resultado += categorias[i] + ": " + cantidadDias[i] + " días.\n";
-}
-
-alert(resultado);
-
-alert("Gracias por elegir tus categorías de comidas, ahora te daremos recomendaciones de platos de fondo en cada categoría para que puedas escogerlos 😋.");
-
-/* Función para ingresar Opciones de Platos de Fondo */
-let opcionesPlatosElegidos = [];
-
-for (let i = 0; i < categorias.length; i++) {
-    if (cantidadDias[i] > 0 && i !== 6) {
-        let platosCategoria = PlatosDeFondo.filter(plato => plato.categoria === categorias[i]);
-        let opcionesPlatosCategoria = [];
-
-        for (let j = 0; j < cantidadDias[i]; j++) {
-            let mensajePlatosCategoria = "Elige un plato de fondo para " + categorias[i] + "(" + (j + 1) + "/" + cantidadDias[i] + " días):\n";
-
-            for (let k = 0; k < platosCategoria.length; k++) {
-                if (!opcionesPlatosCategoria.includes(platosCategoria[k].nombre)) {
-                    mensajePlatosCategoria += (k + 1) + ". " + platosCategoria[k].nombre + "\n";
-                }
-            }
-
-            let opcionPlato = parseInt(prompt(mensajePlatosCategoria));
-
-            if (opcionPlato >= 1 && opcionPlato <= platosCategoria.length) {
-                let platoElegido = platosCategoria[opcionPlato - 1].nombre;
-                opcionesPlatosCategoria.push(platoElegido);
-            } else {
-                alert("Opción: " + opcionPlato + " es inválida 😓, por favor vuelve a ingresar un plato de fondo dentro de las opciones.");
-                j--;
-            }
-        }
-
-        opcionesPlatosElegidos.push({
-            categoria: categorias[i],
-            platos: opcionesPlatosCategoria
-        });
-    }
-}
-
-/* Función para incluir la categoría "Restaurante o delivery" en el resultado final */
-opcionesPlatosElegidos.push({
-    categoria: categorias[6],
-    platos: []
+/* Lista desplegable de categorias */
+const selectCategoria = document.querySelector("#categoria");
+categorias.forEach((categoria) => {
+    let option = document.createElement("option");
+    option.value = categoria;
+    option.innerText = categoria;
+    selectCategoria.append(option);
 });
 
-/* Resultado de ingresar Opciones de Platos de Fondo */
-let resultadoPlatos = "\nEstos son los platos de fondo que elegiste para cada categoría:\n\n";
+selectCategoria.addEventListener("change", mostrarInformacion);
 
-for (let i = 0; i < opcionesPlatosElegidos.length; i++) {
-    let index = categorias.indexOf(opcionesPlatosElegidos[i].categoria);
-    resultadoPlatos += opcionesPlatosElegidos[i].categoria + " (" + cantidadDias[index] + " días):\n";
-    resultadoPlatos += opcionesPlatosElegidos[i].platos.join("\n") + "\n\n";
+/* Lista desplegable de dias de la semana */
+const selectDia = document.querySelector("#semana");
+semana.forEach((dia) => {
+    let option = document.createElement("option");
+    option.value = dia;
+    option.innerText = dia;
+    selectDia.append(option);
+});
+
+selectDia.addEventListener("change", (event) => {
+    const diaSeleccionado = event.target.value;
+    mostrarInformacion(diaSeleccionado);
+});
+
+/* Función para crear la lista de platos */
+function crearHtmlDeArray(arr, contenedor) {
+    contenedor.innerHTML = "";
+    let html;
+    for (const elemento of arr) {
+        html = `
+    <div class="col l3">
+        <div class="card">
+            <img src=" ../img/${elemento.img}" alt="${elemento.nombre}">
+            <hr>
+            <h3>${elemento.nombre}</h3>
+            <p><b>Categoría:</b> ${elemento.categoria} <br/>
+            <b>Preparación:</b> ${elemento.preparacion} <br/>
+            <b>Acompañamiento:</b> ${elemento.acompaniamiento} <br/>
+            <b>Inmediatez:</b> ${elemento.inmediatez} <br/>
+            <b>Elaboración:</b> ${elemento.elaboracion} <br/>
+            <b>Alergias:</b> ${elemento.alergia} </p>
+            <div class="card-action">
+                <button class="btn btnAgregar" data-img="${elemento.img}" data-nombre="${elemento.nombre}" data-categoria="${elemento.categoria}">Agregar plato</button>
+            </div>
+        </div>
+    </div>
+                `;
+        contenedor.innerHTML += html;
+    }
+    /* Función para usar el botón agregar */
+    const btnAgregar = document.querySelectorAll(`.btnAgregar`)
+    btnAgregar.forEach(btn => {
+        btn.addEventListener("click", (event) => {
+            const img = event.currentTarget.dataset.img;
+            const nombre = event.currentTarget.dataset.nombre;
+            const categoria = event.currentTarget.dataset.categoria;
+
+            /* Obtener el valor seleccionado del día */
+            const diaSeleccionado = selectDia.value;
+
+            /* Función para llenar los días del menú con el plato escogido */
+            llenarCaja(diaSeleccionado, { img, nombre, categoria });
+        })
+    })
 }
 
-alert(resultadoPlatos);
+/* Función para mostrar los platos de la categoría escogida */
+function mostrarInformacion() {
+    const categoriaSeleccionada = selectCategoria.value;
+    let filtrarCategoria = PlatosDeFondo.filter(elemento => elemento.categoria == categoriaSeleccionada);
+    crearHtmlDeArray(filtrarCategoria, contenedorC)
+}
 
-alert("Gracias por elegir tus platos de fondo, ¡disfruta de tus comidas balanceadas y saludables! 😋");
+/* Función de búsqueda */
+function buscarPlato(array, filtro) {
+    const encontrado = array.filter((elemento) => {
+        return elemento.nombre.includes(filtro.toLowerCase());
+    });
+    return encontrado;
+}
+
+/* Función para mostrar los platos resultados de la búsqueda */
+btnBuscar.addEventListener("click", () => {
+    const encontrado = buscarPlato(PlatosDeFondo, inputBuscar.value);
+    crearHtmlDeArray(encontrado, contenedorB);
+});
+
+/* Función para llenar información en el menú */
+function llenarCaja(dia, informacion) {
+    let caja = document.getElementById(dia + '-box');
+    caja.innerHTML = `
+    <div class="card">
+        <img src=" ../img/${informacion.img}" alt="${informacion.nombre}">
+        <h3>${informacion.nombre}</h3>
+        <p><b>Categoría:</b> ${informacion.categoria} <br/>
+        <div class="card-action">
+            <button class="btn btnEliminar">Eliminar</button>
+        </div>
+    </div>
+`;
+    /* Crear un objeto con la información que deseas almacenar */
+    const infoParaAlmacenar = {
+        img: informacion.img,
+        categoria: informacion.categoria,
+        nombre: informacion.nombre
+    };
+
+    /* Información existente del localStorage */
+    const infoExistente = JSON.parse(localStorage.getItem(dia)) || [];
+    infoExistente.push(infoParaAlmacenar);
+    localStorage.setItem(dia, JSON.stringify(infoExistente));
+    mostrarInformacionAlmacenada(dia);
+
+    cantidadDias += 1;
+    if (cantidadDias == 0 || cantidadDias >= 7) {
+        alert("🎉 ¡Felicitaciones completaste tu semana! 🎉");
+    } alert(cantidadDias);
+}
+
+/* Función para mostrar la información almacenada por día */
+function mostrarInformacionAlmacenada(dia) {
+    const informacionAlmacenada = JSON.parse(localStorage.getItem(dia)) || [];
+    const contenedorDia = document.getElementById(dia + '-box');
+    contenedorDia.innerHTML = "";
+
+    informacionAlmacenada.forEach((info, index) => {
+        const html = `
+            <div class="card">
+                <img src="../img/${info.img}" alt="${info.nombre}">
+                <h3>${info.nombre}</h3>
+                <p><b>Categoría:</b> ${info.categoria} <br/>
+                <div class="card-action">
+                    <button class="btn btnEliminar" onclick="eliminarInfo('${dia}', ${index})">Eliminar</button>
+                </div>
+            </div>
+        `;
+        contenedorDia.innerHTML += html;
+    });
+}
+
+/* Declaraciones para mostrar la información almacenada por día*/
+document.addEventListener("DOMContentLoaded", function () {
+    mostrarInformacionAlmacenada("lunes");
+    mostrarInformacionAlmacenada("martes");
+    mostrarInformacionAlmacenada("miercoles");
+    mostrarInformacionAlmacenada("jueves");
+    mostrarInformacionAlmacenada("viernes");
+    mostrarInformacionAlmacenada("sabado");
+    mostrarInformacionAlmacenada("domingo");
+})
+
+/* Función para eliminar información del localStorage */
+function eliminarInfo(dia, index) {
+    const informacionAlmacenada = JSON.parse(localStorage.getItem(dia)) || [];
+    informacionAlmacenada.splice(index, 1);
+    localStorage.setItem(dia, JSON.stringify(informacionAlmacenada));
+    mostrarInformacionAlmacenada(dia);
+    cantidadDias -= 1;
+}

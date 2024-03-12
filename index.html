@@ -4,22 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu balanceado y saludable 😋</title>
+
+    <!-- Meta description -->
+    <meta name="description"
+        content="El Buffet Semanal Balanceado es una aplicación web que te permite armar visualmente tu menu semanal, para poder tener una alimentacion balanceada. Te ayuda a mantener una alimentación balanceada mostrando que existen diferentes tipos de alimentos que podemos consumir, basados en carnes, pescados, pollos, menestras, pastas, etc. El objetivo es permitirte estar bien alimentado utilizando alimentos naturales que compramos en cualquier supermercado, pudiendo complementarlos con suplmenteos alimentarios si lo consideras necesario.">
+
+    <!-- Meta keywords -->
+    <meta name="keywords" content="buffet, semana, comer, saludable, balanceado, comida, recetas">
+
+    <!-- Favicon: ícono de la pestaña del navegador -->
+    <link rel="shortcut icon" href="./img/logoBuffetSemanalBalanceado.png" type="image/x-icon">
+
+    <!-- Link CDN Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <title>Buffet semanal balanceado | Facilita la visualización de platos de comida para que puedas ver que comes y asi
+        mejorar el balance de tu alimentación.</title>
 </head>
 
 <body>
+    <!-- Header: encabezado -->
     <header>
-        <h1>
-            Menú balanceadamente saludable 😋
-        </h1>
+
+        <!-- Navbar: bootstrap -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/index.html">
+                    <img src="./img/0.logoBuffetSemanalBalanceado.png" alt="Logo" width="30" height="30"
+                        class="d-inline-block align-text-top">
+                    Buffet semanal balanceado
+                </a>
+            </div>
+        </nav>
     </header>
-    <main>
 
+    <!-- Main: contenido principal -->
+    <main class="container-fluid">
+
+        <!-- Sección Portada -->
+        <section>
+            <div class="row">
+                <div class="col">
+                    <img class="foto-portada" src="./img/1.portada.jpg" alt="Diferentes platos de comida">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Presentación -->
+        <h1>Presentación</h1>
+        <p>El Buffet Semanal Balanceado es una aplicación web que te permite armar visualmente tu menu semanal, para
+            poder tener una alimentacion balanceada. Te ayuda a mantener una alimentación balanceada mostrando que
+            existen diferentes tipos de alimentos que podemos consumir, basados en carnes, pescados, pollos, menestras,
+            pastas, etc. El objetivo es permitirte estar bien alimentado utilizando alimentos naturales que compramos en
+            cualquier supermercado, pudiendo complementarlos con suplmenteos alimentarios si lo consideras necesario.
+        </p>
+
+        <div class="row" id="botonInicio">
+            <a class="btn" href="./pages/menu.html">Manos a la obra</a>
+        </div>
     </main>
-    <footer>
 
+    <!-- Footer: pie de página -->
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <p>Todos los derechos reservados</p>
+            </div>
+        </div>
     </footer>
+
+    <!-- Link JS -->
     <script src="./js/main.js"></script>
+
 </body>
 
 </html>

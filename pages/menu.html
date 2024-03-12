@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Meta description -->
+    <meta name="description"
+        content="El Buffet Semanal Balanceado es una aplicación web que te permite armar visualmente tu menu semanal, para poder tener una alimentacion balanceada. Te ayuda a mantener una alimentación balanceada mostrando que existen diferentes tipos de alimentos que podemos consumir, basados en carnes, pescados, pollos, menestras, pastas, etc. El objetivo es permitirte estar bien alimentado utilizando alimentos naturales que compramos en cualquier supermercado, pudiendo complementarlos con suplmenteos alimentarios si lo consideras necesario.">
+
+    <!-- Meta keywords -->
+    <meta name="keywords" content="buffet, semana, comer, saludable, balanceado, comida, recetas">
+
+    <!-- Favicon: ícono de la pestaña del navegador -->
+    <link rel="shortcut icon" href="../img/0.logoBuffetSemanalBalanceado.png" type="image/x-icon">
+
+    <!-- Link CDN Materialize-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <title>Buffet semanal balanceado | Facilita la visualización de platos de comida para que puedas ver que comes y asi
+        mejorar el balance de tu alimentación.</title>
+</head>
+
+<body>
+    <!-- Header: encabezado -->
+    <header>
+
+        <!-- Navbar: bootstrap -->
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../img/0.logoBuffetSemanalBalanceado.png" alt="Logo" width="30" height="30"
+                        class="d-inline-block align-text-top">
+                    Buffet semanal balanceado
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main: contenido principal -->
+    <main class="container-fluid">
+
+        <!-- Sección Portada -->
+        <section>
+            <div class="row">
+                <div class="col">
+                    <img class="foto-portada" src="../img/1.portada.jpg" alt="Diferentes platos de comida">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Menú Semanal -->
+        <div class="gris">
+            <h1>Aquí se armará tu menú semanal 🍴</h1>
+            <div class="row" id="menu">
+
+                <div class="col box">
+                    <h2>Lunes</h2>
+                    <div id="lunes-box"></div>
+                </div>
+
+                <div class="col box">
+                    <h2>Martes</h2>
+                    <div id="martes-box"></div>
+                </div>
+
+                <div class="col box">
+                    <h2>Miércoles</h2>
+                    <div id="miercoles-box"></div>
+                </div>
+
+                <div class="col box">
+                    <h2>Jueves</h2>
+                    <div id="jueves-box"></div>
+                </div>
+
+                <div class="col box">
+                    <h2>Viernes</h2>
+                    <div id="viernes-box"></div>
+                </div>
+
+                <div class="col box">
+                    <h2>Sábado</h2>
+                    <div id="sabado-box"></div>
+                </div>
+
+                <div class="col box">
+                    <h2>Domingo</h2>
+                    <div id="domingo-box"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Categorías -->
+        <h1>Categorías de comida</h1>
+        <p>Aquí te mostramos las categorías de comidas entre las que podrás elegir para completar tus almuerzos de 01
+            semana 🍴</p>
+        <div class="row" id="seleccion">
+
+            <!--Lista desplegable para categorias-->
+            <div class="col 6">
+                <h2>1. Selecciona una categoría</h2>
+                <p id="infoSeleccion"></p>
+                <select name="categoria" id="categoria">
+                    <option value="Default">Selecciona una categoría</option>
+                </select>
+            </div>
+
+            <!--Lista desplegable para días de la semana-->
+            <div class="col 6">
+                <h2>2. Selecciona un día de la semana</h2>
+                <p id="infoSemana"></p>
+                <select name="semana" id="semana">
+                    <option value="Default">Selecciona un día de la semana</option>
+                </select>
+            </div>
+
+            <!-- Instrucción 3-->
+            <div class="col 6">
+                <h2>3. Agrega tu plato</h2>
+                <p>👇</p>
+            </div>
+        </div>
+
+        <!-- Acá aparecen las cards de opciones de platos de fondo -->
+        <div class="row contenedor" id="contenedorC">
+            <!-- contenido dinamico -->
+        </div>
+
+        <!-- Sección Buscador -->
+        <div class="gris">
+            <h1>Buscador de platos</h1>
+
+            <!-- Buscador-->
+            <div class="row" id="buscador">
+                <div class="col">
+                    <div>
+                        <label for="ingreso">Platos de fondo</label>
+                        <input type="text" name="ingreso" id="ingreso" />
+                    </div>
+                    <div>
+                        <button id="btnBuscar" class="btn">Buscar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Acá aparecen las cards de opciones de platos de fondo -->
+            <div class="row contenedor" id="contenedorB">
+                <!-- contenido dinamico -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer: pie de página -->
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <p>Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link JS -->
+    <script src="../js/main.js"></script>
+
+</body>
+
+</html>
