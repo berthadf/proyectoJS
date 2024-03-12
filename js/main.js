@@ -17,49 +17,49 @@ let cantidadDias = 0;
 const semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
 const categorias = ["", "Pescado o marisco 🐟", "Carne de res o cerdo 🥩", "Aves 🍗", "Pasta 🍝", "Menestras o cereales 🫘", "Platos especiales 🍲", "Restaurante o delivery 👩🏻‍🍳", "***  Buscar por plato 🔎  ***"];
 const PlatosDeFondo = [
-    { id: 1, nombre: "ceviche de pescado", categoria: categorias[1], preparacion: "sí", acompaniamiento: "camote", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p01CevicheDePescado.jpg" },
-    { id: 2, nombre: "arrimado de atún", categoria: categorias[1], preparacion: "no", acompaniamiento: "arroz", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p02ArrimadoDeAtun.jpg" },
-    { id: 3, nombre: "chupe de pescado", categoria: categorias[1], preparacion: "no", acompaniamiento: 'choclo', inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p03ChupeDePescado.jpg" },
-    { id: 4, nombre: "coctel de langostinos", categoria: categorias[1], preparacion: "sí", acompaniamiento: "no", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p04CoctelDeLangostinos.jpg" },
-    { id: 5, nombre: "escabeche", categoria: categorias[1], preparacion: "sí", acompaniamiento: "no", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p05Escabeche.jpg" },
-    { id: 6, nombre: "arroz con langostinos", categoria: categorias[1], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p06ArrozConLangostinos.jpg" },
-    { id: 7, nombre: "pejerreyes fritos", categoria: categorias[1], preparacion: "sí", acompaniamiento: "puré de papa", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p07PejerreyesFritos.jpg" },
-    { id: 8, nombre: "albóndigas", categoria: categorias[2], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p08Albondigas.jpg" },
-    { id: 9, nombre: "arroz tapado", categoria: categorias[2], preparacion: "no", acompaniamiento: "platano frito", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p09ArrozTapado.jpg" },
-    { id: 10, nombre: "asado", categoria: categorias[2], preparacion: "no", acompaniamiento: "puré de papa", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p10Asado.jpg" },
-    { id: 11, nombre: "bistec", categoria: categorias[2], preparacion: "sí", acompaniamiento: "papa dorada", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p11Bistec.jpg" },
-    { id: 12, nombre: "chuleta", categoria: categorias[2], preparacion: "sí", acompaniamiento: "camote", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p12Chuleta.jpg" },
-    { id: 13, nombre: "apanado", categoria: categorias[2], preparacion: "sí", acompaniamiento: "arroz", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p13Apanado.jpg" },
-    { id: 14, nombre: "enrollado de carne", categoria: categorias[2], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p14EnrolladoDeCarne.jpg" },
-    { id: 15, nombre: "ají de gallina", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "elaborado", alergia: "sí", img: "p15AjiDeGallina.jpg" },
-    { id: 16, nombre: "alitas fritas", categoria: categorias[3], preparacion: "sí", acompaniamiento: "puré de papa", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p16AlitasFritas.jpg" },
-    { id: 17, nombre: "arroz con pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p17ArrozConPollo.jpg" },
-    { id: 18, nombre: "cordon bleu", categoria: categorias[3], preparacion: "sí", acompaniamiento: "puré de yuca", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p18CordonBleu.jpg" },
-    { id: 19, nombre: "estofado de pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p19EstofadoDePollo.jpg" },
-    { id: 20, nombre: "guiso de pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p20GuisoDePollo.jpg" },
-    { id: 21, nombre: "pavo con puré", categoria: categorias[3], preparacion: "no", acompaniamiento: "puré de papa", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p21PavoConPure.jpg" },
-    { id: 22, nombre: "capeletti", categoria: categorias[4], preparacion: "no", acompaniamiento: "salsa a la crema", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p22Capeletti.jpg" },
-    { id: 23, nombre: "ensalada de fideos", categoria: categorias[4], preparacion: "no", acompaniamiento: "no", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p23EnsaladaDeFideos.jpg" },
-    { id: 24, nombre: "fideos con salsa a lo Alfredo", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p24FideosConSalsaALoAlfredo.jpg" },
-    { id: 25, nombre: "fideos con sala de nuez", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p25FideosConSalsaDeNuez.jpg" },
-    { id: 26, nombre: "fideos con salsa verde", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p26FideosConSalsaVerde.jpg" },
-    { id: 27, nombre: "lasagna de carne", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p27LasagnaDeCarne.jpg" },
-    { id: 28, nombre: "ravioles", categoria: categorias[4], preparacion: "no", acompaniamiento: "salsa de tuco", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p28Ravioles.jpg" },
-    { id: 29, nombre: "trigo con carne", categoria: categorias[5], preparacion: "no", acompaniamiento: "queso fresco", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p29TrigoConCarne.jpg" },
-    { id: 30, nombre: "frejol canario", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p30FrejolCanario.jpg" },
-    { id: 31, nombre: "frejol rojo", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p31FrejolRojo.jpg" },
-    { id: 32, nombre: "garbanzos a la vizcaina", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p32GarbanzosALaVizcaina.jpg" },
-    { id: 33, nombre: "lentejas", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p33Lentejas.jpg" },
-    { id: 34, nombre: "olluco", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p34Olluco.jpg" },
-    { id: 35, nombre: "garbanzos", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p35Garbanzos.jpg" },
-    { id: 36, nombre: "arroz a la cubana", categoria: categorias[6], preparacion: "sí", acompaniamiento: "platano frito", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p36ArrozALaCubana.jpg" },
-    { id: 37, nombre: "arroz chaufa", categoria: categorias[6], preparacion: "sí", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p37ArrozChaufa.jpg" },
-    { id: 38, nombre: "locro de zapallo", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p38LocroDeZapallo.jpg" },
-    { id: 39, nombre: "pastel de choclo con carne", categoria: categorias[6], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "elaborado", alergia: "no", img: "p39PastelDeChocloConCarne.jpg" },
-    { id: 40, nombre: "pepián de choclo", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p40PepianDeChoclo.jpg" },
-    { id: 41, nombre: "saltado de vainitas", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p41SaltadoDeVainitas.jpg" },
-    { id: 42, nombre: "carapulcra", categoria: categorias[6], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "elaborado", alergia: "sí", img: "p42Carapulcra.jpg" },
-    { id: 43, nombre: "Lo que se me antoje", categoria: categorias[7], preparacion: "N / A", acompaniamiento: "N / A", inmediatez: "N / A", elaboracion: "N / A", alergia: "N / A", img: "p43LoQueSeMeAntoje.jpg" },
+    { id: 1, nombre: "ceviche de pescado", categoria: categorias[1], preparacion: "sí", acompaniamiento: "camote", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p01CevicheDePescado.JPG" },
+    { id: 2, nombre: "arrimado de atún", categoria: categorias[1], preparacion: "no", acompaniamiento: "arroz", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p02ArrimadoDeAtun.JPG" },
+    { id: 3, nombre: "chupe de pescado", categoria: categorias[1], preparacion: "no", acompaniamiento: 'choclo', inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p03ChupeDePescado.JPG" },
+    { id: 4, nombre: "coctel de langostinos", categoria: categorias[1], preparacion: "sí", acompaniamiento: "no", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p04CoctelDeLangostinos.JPG" },
+    { id: 5, nombre: "escabeche", categoria: categorias[1], preparacion: "sí", acompaniamiento: "no", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p05Escabeche.JPG" },
+    { id: 6, nombre: "arroz con langostinos", categoria: categorias[1], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p06ArrozConLangostinos.JPG" },
+    { id: 7, nombre: "pejerreyes fritos", categoria: categorias[1], preparacion: "sí", acompaniamiento: "puré de papa", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p07PejerreyesFritos.JPG" },
+    { id: 8, nombre: "albóndigas", categoria: categorias[2], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p08Albondigas.JPG" },
+    { id: 9, nombre: "arroz tapado", categoria: categorias[2], preparacion: "no", acompaniamiento: "platano frito", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p09ArrozTapado.JPG" },
+    { id: 10, nombre: "asado", categoria: categorias[2], preparacion: "no", acompaniamiento: "puré de papa", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p10Asado.JPG" },
+    { id: 11, nombre: "bistec", categoria: categorias[2], preparacion: "sí", acompaniamiento: "papa dorada", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p11Bistec.JPG" },
+    { id: 12, nombre: "chuleta", categoria: categorias[2], preparacion: "sí", acompaniamiento: "camote", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p12Chuleta.JPG" },
+    { id: 13, nombre: "apanado", categoria: categorias[2], preparacion: "sí", acompaniamiento: "arroz", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p13Apanado.JPG" },
+    { id: 14, nombre: "enrollado de carne", categoria: categorias[2], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p14EnrolladoDeCarne.JPG" },
+    { id: 15, nombre: "ají de gallina", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "elaborado", alergia: "sí", img: "p15AjiDeGallina.JPG" },
+    { id: 16, nombre: "alitas fritas", categoria: categorias[3], preparacion: "sí", acompaniamiento: "puré de papa", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p16AlitasFritas.JPG" },
+    { id: 17, nombre: "arroz con pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p17ArrozConPollo.JPG" },
+    { id: 18, nombre: "cordon bleu", categoria: categorias[3], preparacion: "sí", acompaniamiento: "puré de yuca", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p18CordonBleu.JPG" },
+    { id: 19, nombre: "estofado de pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p19EstofadoDePollo.JPG" },
+    { id: 20, nombre: "guiso de pollo", categoria: categorias[3], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p20GuisoDePollo.JPG" },
+    { id: 21, nombre: "pavo con puré", categoria: categorias[3], preparacion: "no", acompaniamiento: "puré de papa", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p21PavoConPure.JPG" },
+    { id: 22, nombre: "capeletti", categoria: categorias[4], preparacion: "no", acompaniamiento: "salsa a la crema", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p22Capeletti.JPG" },
+    { id: 23, nombre: "ensalada de fideos", categoria: categorias[4], preparacion: "no", acompaniamiento: "no", inmediatez: "sí", elaboracion: "básico", alergia: "sí", img: "p23EnsaladaDeFideos.JPG" },
+    { id: 24, nombre: "fideos con salsa a lo Alfredo", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p24FideosConSalsaALoAlfredo.JPG" },
+    { id: 25, nombre: "fideos con sala de nuez", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p25FideosConSalsaDeNuez.JPG" },
+    { id: 26, nombre: "fideos con salsa verde", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p26FideosConSalsaVerde.JPG" },
+    { id: 27, nombre: "lasagna de carne", categoria: categorias[4], preparacion: "no", acompaniamiento: "queso parmesano", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p27LasagnaDeCarne.JPG" },
+    { id: 28, nombre: "ravioles", categoria: categorias[4], preparacion: "no", acompaniamiento: "salsa de tuco", inmediatez: "no", elaboracion: "básico", alergia: "sí", img: "p28Ravioles.JPG" },
+    { id: 29, nombre: "trigo con carne", categoria: categorias[5], preparacion: "no", acompaniamiento: "queso fresco", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p29TrigoConCarne.JPG" },
+    { id: 30, nombre: "frejol canario", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p30FrejolCanario.JPG" },
+    { id: 31, nombre: "frejol rojo", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p31FrejolRojo.JPG" },
+    { id: 32, nombre: "garbanzos a la vizcaina", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p32GarbanzosALaVizcaina.JPG" },
+    { id: 33, nombre: "lentejas", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p33Lentejas.JPG" },
+    { id: 34, nombre: "olluco", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p34Olluco.JPG" },
+    { id: 35, nombre: "garbanzos", categoria: categorias[5], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "básico", alergia: "no", img: "p35Garbanzos.JPG" },
+    { id: 36, nombre: "arroz a la cubana", categoria: categorias[6], preparacion: "sí", acompaniamiento: "platano frito", inmediatez: "sí", elaboracion: "básico", alergia: "no", img: "p36ArrozALaCubana.JPG" },
+    { id: 37, nombre: "arroz chaufa", categoria: categorias[6], preparacion: "sí", acompaniamiento: "no", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p37ArrozChaufa.JPG" },
+    { id: 38, nombre: "locro de zapallo", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "sí", img: "p38LocroDeZapallo.JPG" },
+    { id: 39, nombre: "pastel de choclo con carne", categoria: categorias[6], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "elaborado", alergia: "no", img: "p39PastelDeChocloConCarne.JPG" },
+    { id: 40, nombre: "pepián de choclo", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p40PepianDeChoclo.JPG" },
+    { id: 41, nombre: "saltado de vainitas", categoria: categorias[6], preparacion: "no", acompaniamiento: "arroz", inmediatez: "no", elaboracion: "intermedio", alergia: "no", img: "p41SaltadoDeVainitas.JPG" },
+    { id: 42, nombre: "carapulcra", categoria: categorias[6], preparacion: "no", acompaniamiento: "no", inmediatez: "no", elaboracion: "elaborado", alergia: "sí", img: "p42Carapulcra.JPG" },
+    { id: 43, nombre: "Lo que se me antoje", categoria: categorias[7], preparacion: "N / A", acompaniamiento: "N / A", inmediatez: "N / A", elaboracion: "N / A", alergia: "N / A", img: "p43LoQueSeMeAntoje.JPG" },
 ]
 
 /* Lista desplegable de categorias */
@@ -108,8 +108,7 @@ function crearHtmlDeArray(arr, contenedor) {
                 <button class="btn btnAgregar" data-img="${elemento.img}" data-nombre="${elemento.nombre}" data-categoria="${elemento.categoria}">Agregar plato</button>
             </div>
         </div>
-    </div>
-                `;
+    </div>`;
         contenedor.innerHTML += html;
     }
     /* Función para usar el botón agregar */
@@ -161,25 +160,23 @@ function llenarCaja(dia, informacion) {
         <div class="card-action">
             <button class="btn btnEliminar">Eliminar</button>
         </div>
-    </div>
-`;
+    </div>`;
     /* Crear un objeto con la información que deseas almacenar */
     const infoParaAlmacenar = {
         img: informacion.img,
         categoria: informacion.categoria,
         nombre: informacion.nombre
     };
-
     /* Información existente del localStorage */
     const infoExistente = JSON.parse(localStorage.getItem(dia)) || [];
     infoExistente.push(infoParaAlmacenar);
     localStorage.setItem(dia, JSON.stringify(infoExistente));
     mostrarInformacionAlmacenada(dia);
-
     cantidadDias += 1;
+    /* Función para sumar la cantidad de días que se van llenando */
     if (cantidadDias == 0 || cantidadDias >= 7) {
         alert("🎉 ¡Felicitaciones completaste tu semana! 🎉");
-    } alert(cantidadDias);
+    };
 }
 
 /* Función para mostrar la información almacenada por día */
@@ -197,8 +194,7 @@ function mostrarInformacionAlmacenada(dia) {
                 <div class="card-action">
                     <button class="btn btnEliminar" onclick="eliminarInfo('${dia}', ${index})">Eliminar</button>
                 </div>
-            </div>
-        `;
+            </div>`;
         contenedorDia.innerHTML += html;
     });
 }
