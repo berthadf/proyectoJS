@@ -3,13 +3,6 @@ const contenedorB = document.querySelector("#contenedorB");
 const contenedorC = document.querySelector("#contenedorC");
 const ingresoBusqueda = document.querySelectorAll("input");
 const btnBuscar = document.querySelector("#btnBuscar");
-const lunesBox = document.querySelector("#lunes-box");
-const martesBox = document.querySelector("#martes-box");
-const miercolesBox = document.querySelector("#miercoles-box");
-const juevesBox = document.querySelector("#jueves-box");
-const viernesBox = document.querySelector("#viernes-box");
-const sabadoBox = document.querySelector("#sabado-box");
-const domingoBox = document.querySelector("#domingo-box");
 const inputBuscar = ingresoBusqueda[0];
 let cantidadDias = 0;
 
