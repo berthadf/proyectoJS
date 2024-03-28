@@ -18,6 +18,12 @@
     <!-- Link CDN Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
+    <!-- Link CDN Sweet Alert-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.min.css">
+
+    <!-- Link CSS Toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- Link CSS -->
     <link rel="stylesheet" href="../css/style.css">
 
@@ -49,7 +55,7 @@
     </header>
 
     <!-- Main: contenido principal -->
-    <main class="container-fluid">
+    <main class="container-fluid" id="main">
 
         <!-- Sección Portada -->
         <section>
@@ -61,8 +67,8 @@
         </section>
 
         <!-- Sección Menú Semanal -->
-        <div class="gris">
-            <h1>Aquí se armará tu menú semanal 🍴</h1>
+        <div class="gris" id="menuSemana">
+            <h1>Aquí arma tu menú semanal 🍴</h1>
             <div class="row" id="menu">
 
                 <div class="col box">
@@ -103,9 +109,8 @@
         </div>
 
         <!-- Sección Categorías -->
-        <h1>Categorías de comida</h1>
-        <p>Aquí te mostramos las categorías de comidas entre las que podrás elegir para completar tus almuerzos de 01
-            semana 🍴</p>
+        <p><b>Aquí te mostramos las categorías de comidas entre las que podrás elegir para completar tus almuerzos de 01
+                semana 🍴</b></p>
         <div class="row" id="seleccion">
 
             <!--Lista desplegable para categorias-->
@@ -169,7 +174,16 @@
                 <p>Todos los derechos reservados</p>
             </div>
         </div>
+        <div class="row">
+            <p id="anho"></p>
+        </div>
     </footer>
+
+    <!-- Link JS de Sweer Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.7/dist/sweetalert2.all.min.js"></script>
+
+    <!-- Link JS de Toastify-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!-- Link JS -->
     <script src="../js/main.js"></script>

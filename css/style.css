@@ -4,15 +4,21 @@
     overflow-x: hidden;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 h1 {
     font-family: Indie Flower;
     line-height: normal;
+    font-weight: bold;
     color: #005f73;
     text-align: center;
     margin-top: 0px;
     margin-bottom: 0px;
     padding: none;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
 }
 
 h2 {
@@ -24,7 +30,7 @@ h2 {
     margin-top: 0px;
     margin-bottom: 0px;
     padding: none;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
 }
 
 h3 {
@@ -35,12 +41,12 @@ h3 {
     text-align: center;
     margin: 0px;
     padding: 0px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 p {
     font-family: Indie Flower;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #005f73;
     text-align: justify;
     margin: none;
@@ -83,7 +89,9 @@ nav {
 footer {
     background-color: #0a9396;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding-top: 40px;
     margin-top: auto;
 
@@ -95,6 +103,7 @@ footer {
 
 .gris {
     background-color: #ECECEC;
+    min-height: 100px;
 }
 
 .contenedor {
@@ -109,10 +118,11 @@ footer {
 }
 
 .row {
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     margin: 0;
     padding: 0;
+    display: flex;
 
     .col.l3 {
         margin-left: 0;
@@ -128,10 +138,11 @@ footer {
 .box {
     width: 100%;
     border: 1px solid #ccc;
-
-    .card {
-        height: 44vh;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .card {
@@ -142,12 +153,23 @@ footer {
     border: 1.5px solid #777;
     border-radius: 5px;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn {
     height: 30px;
     line-height: 30px;
     text-transform: none;
+}
+
+#presentacion {
+    display: flex;
+    align-items: center;
+    height: 80vh;
+    padding-top: 40px;
 }
 
 #botonInicio {
@@ -161,7 +183,6 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    min-height: 40vh;
 }
 
 #seleccion {
