@@ -1,17 +1,19 @@
 /* Constantes */
+const selectCategoria = document.querySelector("#categoria");
+const selectDia = document.querySelector("#semana");
 const contenedorB = document.querySelector("#contenedorB");
 const contenedorC = document.querySelector("#contenedorC");
 const ingresoBusqueda = document.querySelectorAll("input");
 const btnBuscar = document.querySelector("#btnBuscar");
 const inputBuscar = ingresoBusqueda[0];
 let cantidadDias = 0;
+const API_URL = "../db/db.json"
 
 /* Arrays */
 const semana = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
 const categorias = ["", "Pescado o marisco 🐟", "Carne de res o cerdo 🥩", "Aves 🍗", "Pasta 🍝", "Menestras o cereales 🫘", "Platos especiales 🍲", "Restaurante o delivery 👩🏻‍🍳", "***  Buscar por plato 🔎  ***"];
 
 /* Lista desplegable de categorias */
-const selectCategoria = document.querySelector("#categoria");
 categorias.forEach((categoria) => {
     let option = document.createElement("option");
     option.value = categoria;
@@ -23,7 +25,6 @@ categorias.forEach((categoria) => {
 selectCategoria.addEventListener("change", mostrarInformacion);
 
 /* Lista desplegable de dias de la semana */
-const selectDia = document.querySelector("#semana");
 semana.forEach((dia) => {
     let option = document.createElement("option");
     option.value = dia;
@@ -87,12 +88,9 @@ function scrollToSection(sectionId) {
 
 /* Función para mostrar los platos de la categoría escogida */
 function mostrarInformacion() {
-    /* Datos locales */
-    fetch("../db/db.json")
-        .then(response => response.json())
-        .then(data => {
-            const { PlatosDeFondo } = data;
-            const categoriaSeleccionada = selectCategoria.value;
+    const categoriaSeleccionada = selectCategoria.value;
+    getData(API_URL)
+        .then(PlatosDeFondo => {
             let filtrarCategoria = PlatosDeFondo.filter(elemento => elemento.categoria == categoriaSeleccionada);
             contenedorC.innerHTML = "";
             crearHtmlDeArray(filtrarCategoria, contenedorC)
@@ -109,10 +107,8 @@ function buscarPlato(array, filtro) {
 
 /* Función para mostrar los platos resultados de la búsqueda */
 btnBuscar.addEventListener("click", () => {
-    fetch("../db/db.json")
-        .then(response => response.json())
-        .then(data => {
-            const { PlatosDeFondo } = data;
+    getData(API_URL)
+        .then(PlatosDeFondo => {
             const encontrado = buscarPlato(PlatosDeFondo, inputBuscar.value);
             contenedorB.innerHTML = "";
             crearHtmlDeArray(encontrado, contenedorB);
@@ -276,7 +272,6 @@ function mostrarInformacionAlmacenada(dia) {
             eliminarInfo(dia, index);
         });
     });
-
 }
 
 /* Declaraciones para mostrar la información almacenada por día*/
@@ -303,3 +298,10 @@ function eliminarInfo(dia, index) {
 const hoy = new Date();
 const anho = document.getElementById("anho");
 anho.innerHTML = hoy.getFullYear();
+
+/* Función para obtener datos de DB local */
+async function getData(url) {
+    const respuesta = await fetch(url);
+    const datos = await respuesta.json();
+    return datos.PlatosDeFondo;
+}
