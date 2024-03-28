@@ -3,7 +3,7 @@ const fondos = ["fondoAves.jpg", "fondoCarne.jpg", "fondoMenestras.jpg", "fondoP
 
 function cambiarImagen(backgrounds) {
     let random = Math.floor(Math.random() * backgrounds.length)
-    imagenFondo.setAttribute("src", `../img/bg/${fondos[random]}`)
+    imagenFondo.setAttribute("src", `./img/bg/${fondos[random]}`)
 }
 window.onload = cambiarImagen(fondos)
 
